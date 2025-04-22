@@ -1,0 +1,185 @@
+/* Reset padrão */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia', serif;
+    background-color: #e0f7fa; /* Azul bebê */
+    overflow: hidden;
+    text-align: center;
+    color: #333;
+}
+
+/* Fundo animado */
+.sky-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #1a75ff, #80bfff);
+    animation: gradientShift 8s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes gradientShift {
+    0% {
+        background: linear-gradient(160deg, #1a75ff, #80bfff);
+    }
+    100% {
+        background: linear-gradient(160deg, #003366, #3399ff);
+    }
+}
+
+/* Conteúdo do site */
+#content {
+    position: relative;
+    z-index: 2;
+    top: 20vh;
+}
+
+.title {
+    font-size: 3em;
+    text-shadow: 0 0 10px #0066cc, 0 0 20px #3399ff;
+}
+
+.subtitle {
+    font-size: 1.5em;
+    margin: 20px 0;
+    text-shadow: 0 0 5px #3399ff;
+}
+
+button {
+    background: #0059b3;
+    color: white;
+    border: none;
+    font-size: 1.2em;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+button:hover {
+    background: #3399ff;
+    transform: scale(1.1);
+}
+
+.hidden {
+    display: none;
+}
+
+#surprise-message {
+    margin-top: 20px;
+    font-size: 1.8em;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilo para o contêiner de quadros */
+.photo-frame-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* Estilo dos quadros tipo Polaroid */
+.photo-frame {
+    width: 250px;
+    height: 350px;
+    background: #ffffff;
+    border: 5px solid #ccc;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    transform: rotate(var(--rotation, 0deg));
+    transition: transform 0.3s ease;
+}
+
+.photo-frame:hover {
+    transform: scale(1.05) rotate(0deg);
+}
+
+.photo-frame:nth-child(1) {
+    --rotation: -5deg;
+}
+
+.photo-frame:nth-child(2) {
+    --rotation: 5deg;
+}
+
+.photo-frame:nth-child(3) {
+    --rotation: -3deg;
+}
+
+/* Estilo para as fotos */
+.photo {
+    width: 90%;
+    height: 80%;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Texto opcional no quadro */
+.photo-frame .photo-caption {
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+}
+
+/* Tornar responsivo para dispositivos menores */
+@media (max-width: 768px) {
+    .photo-frame {
+        width: 200px;
+        height: 300px;
+    }
+
+    .photo {
+        width: 90%;
+        height: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .photo-frame {
+        width: 150px;
+        height: 220px;
+    }
+
+    .photo {
+        width: 90%;
+        height: 75%;
+    }
+
+    .photo-frame .photo-caption {
+        font-size: 12px;
+    }
+}
